@@ -27,6 +27,7 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
+            background-color: #fff;
 
             .post-owner {
                 margin: 10px 0; 
@@ -59,9 +60,31 @@
                 }
             }
 
-            &:hover {
-                transform: scale(1.01);
-                transition: all 0.3s ease-in-out;
+            .post-link {
+                a {
+                    text-decoration: none;
+                    color: #07070a;
+                    position: relative;
+                    font-size: 18px;
+            
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -3px;
+                        width: 0%;
+                        height: 2px;
+                        background-color: #0d0d57;
+                        transition: all 0.3s ease-in-out;
+                    }
+            
+                    &:hover {
+                        color: #0d0d57;
+                        &::before {
+                            width: 100%;
+                        }
+                    }
+                }
             }
         }
     }
