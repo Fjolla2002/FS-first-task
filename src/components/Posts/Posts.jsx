@@ -6,6 +6,7 @@ import {NavLink} from 'react-router-dom';
 const Posts = () => {
     const [posts, setPosts] = useState();
     const [users, setUsers] = useState();
+    const [showedPosts, setShowedPosts] = useState(20);
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -27,12 +28,18 @@ const Posts = () => {
         });
     }, [])
 
+    const handleLoadMore = () => {
+        if(showedPosts < posts.length){
+            setShowedPosts(showedPosts + 6);
+        }
+    }
+
 
   return (
     <div className='container'>
         <h2 className='title'>Recent Posts</h2>
         <div className='all-posts'>
-            {posts?.slice(0, 20).map((post) => (
+            {posts?.slice(0, showedPosts).map((post) => (
                 <div className='single-post' key={post.id}>
                     <div className='post-owner'>
                         {users?.filter((user) => user.id === post.userId).map((user) => (
@@ -51,6 +58,11 @@ const Posts = () => {
                 </div>
             ))}
         </div>
+        {showedPosts < posts?.length &&
+            <button onClick={() => handleLoadMore()} className='btn'>
+                Load More
+            </button>
+        }
     </div>
   )
 }
