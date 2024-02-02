@@ -1,0 +1,114 @@
+.container {
+    padding: 50px 0;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+        margin-bottom: 50px;
+        font-size: 30px;
+        color: #0d0d57;
+    }
+
+    .all-posts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        .single-post {
+            flex: 0 0 calc(50% - 30px);
+            box-shadow: 0 0 10px 0 rgba(128,128,128,0.5);
+            border-radius: 10px;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            background-color: #fff;
+
+            .post-owner {
+                margin: 10px 0; 
+                font-weight: bold;
+                color: #747475;
+
+                .username {
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    color: #0d0d57;
+                }
+            }
+
+            .post-details {
+                flex-grow: 1;
+
+                h3 {
+                    text-transform: capitalize;
+                    font-size: 22px;
+                    color: #07070a;
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    font-size: 18px;
+                    color: #747475;
+                    text-transform: capitalize;
+                    margin-bottom: 30px;
+                    font-style: italic;
+                }
+            }
+
+            .post-link {
+                a {
+                    text-decoration: none;
+                    color: #07070a;
+                    position: relative;
+                    font-size: 18px;
+            
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -3px;
+                        width: 0%;
+                        height: 2px;
+                        background-color: #0d0d57;
+                        transition: all 0.3s ease-in-out;
+                    }
+            
+                    &:hover {
+                        color: #0d0d57;
+                        &::before {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 50px;
+        background-color: transparent;
+        border: 1px solid #0d0d57;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #0d0d57;
+            color: #fff;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container .all-posts {
+        display: flex;
+        flex-direction: column;
+    }
+}
